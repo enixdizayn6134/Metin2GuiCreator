@@ -1,0 +1,133 @@
+<html>
+<head>
+<title>Enix Yazilim Gui Ayarlama V1</title>
+
+<meta name="description" content="Enix's Gui Creator">
+<meta name="author" content="Enix">
+<meta name="keywords" content="GuiCreator">
+<meta charset="utf-8"> 
+
+<!-- load stylesheets -->
+<link href="http://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+
+<!-- load jquery & jquery-ui -->
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+
+<!-- load functions -->
+<script language="javascript" type="text/javascript" src="scripts/functions/objects.js"></script>
+<script language="javascript" type="text/javascript" src="scripts/functions/selectbox.js"></script>
+<script language="javascript" type="text/javascript" src="scripts/functions/graphical.js"></script>
+
+<!-- load configs -->
+<!-- <script language="javascript" type="text/javascript" src="scripts/config/guiElements.js"></script> -->
+
+<!-- load main file -->
+<script language="javascript" type="text/javascript" src="scripts/main.js"></script>
+
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <div id="logo">
+                <img src="images/logo.png">
+            </div>
+            <div id="title">
+                <hr class="first_top">
+                <hr class="second_top">
+                <h1>Enix Yazilim Gui Ayarlama V1</h1>
+                <hr class="first_down">
+                <hr class="second_down">
+            </div>
+
+            <div id="menu">
+                <button id="newBoardButton" title="Start a new project" onclick="newProject()"></button>
+                <div class="hiddenElements">
+                    <button id="saveScriptButton" title='Komut dosyasını "uiscript" türü olarak kaydet' onclick="createScript('uiscript')"></button>
+                </div>
+            </div>
+        </div>
+        <div id="guiElements">
+            <table class="elementsTable hiddenElements">
+                <tr><th>Parentlar</th></tr>
+                <tr>
+                    <td>
+                        <select name="parentList" id="parentList">
+                        </select>
+                    </td>
+                </tr>
+                <tr><th>Boardlar</th></tr>
+                <tr>
+                    <td class="first">
+                        <select name="boardType" id="boardType" onChange="setPreview('parentElement',this.options[this.selectedIndex].text)">
+                            <option selected="selected" name="board">board</option>
+                            <option value="thinboard">thinboard</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button class="addElement" title='Board Elementi Ekle' onclick="addElement('board')"></button>
+                    </td>
+                    <tr>
+                        <td><div class="previewElement"><img id="parentPreview" src="images/gui/board/board.png"></div></td>
+                    </tr>
+                </tr>
+
+                <tr><th>Buttonlar</th></tr>
+                <tr>
+                    <td class="first">
+                        <select name="buttonType" id="buttonType" onChange="setPreview('button',this.options[this.selectedIndex].text);">
+                            <option selected="selected">xsmall_button</option>
+                            <option>small_thin_button</option>
+                            <option>small_button</option>
+                            <option>middle_button</option>
+                            <option>big_button</option>
+                            <option>large_button</option>
+                            <option>xlarge_thin_button</option>
+                            <option>xlarge_button</option>
+                            <option>close_button</option>
+                            <option>minimize_button</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button class="addElement" title='Buton Elementi Ekle' onclick="addElement('button')"></button>
+                    </td>
+                    <tr>
+                        <td><div class="previewElement"><img id="buttonPreview" src="images/gui/button/xsmall_button.png"></div></td>
+                    </tr>
+                </tr>
+                <tr><th>Yazı</th></tr>
+                <tr>
+                    <td><button class="addElement" title='Yazı Elementi Ekle' onclick="addElement('label')"></button><td>
+                </tr>
+
+            </table>
+        </div>
+        <div id="mainPaper"></div>
+        <div id="guiElementOptions">
+            <div id="debug" class="hiddenElements">
+            <span>Fare Pozisyonu:<span><br>
+            <span id="mousePosX" > x: 0</span><br>
+            <span id="mousePosY" > y: 0</span>
+            </div>
+            <table class="elementsTable hiddenElements">
+                <tr><th>Element Ayarları</th></tr>
+                <tr>
+                    <td>
+                        <select name="elementList" id="elementList"  onchange="createElementOptions(this.options[this.selectedIndex].value);blink(this.options[this.selectedIndex].value)">
+                        </select>
+                    </td>
+                    <td><button class="deleteElement" title='Elementi Kaldır' onclick="removeSelectedElement()"></button></td>
+                </tr>
+            </table>
+            <div id="scriptOptions"></div>
+        </div>
+        <div id="footer">
+            <div id="mainFooter">
+                Copyright © 2020-2021 Enix Yazilim<br/>
+                <hr class="first_down">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
